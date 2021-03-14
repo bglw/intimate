@@ -19,8 +19,8 @@ ESPAsyncE131 e131(UNIVERSE_COUNT);
 
 void setup()
 {
-    Serial.begin(115200);
-    delay(3000);
+    Serial.begin(74880);
+    delay(1000);
 
     Serial.println(F("Intimate node online"));
 
@@ -42,7 +42,7 @@ void setup()
     Serial.println(F("Successfully connected to a network"));
     
     engine.wifi_done();
-    delay(2000);
+    delay(1000);
     // Serial.println(WiFi.localIP());
 
     if (e131.begin(E131_MULTICAST, START_UNIVERSE, UNIVERSE_COUNT))
