@@ -2,6 +2,7 @@
 
 #define FASTLED_INTERNAL
 #include <FastLED.h>
+#include "animations.h"
 
 // LED config
 #define DATA_PIN 1
@@ -46,6 +47,10 @@ namespace Intimate
         void fill(CRGB::HTMLColorCode color);
         void blank();
 
+        // Engine step
+        void step();
+        void animationStep(AnimationData &data);
+
         // Engine DMX
         void update(uint8_t vals[]);
 
@@ -54,9 +59,4 @@ namespace Intimate
         void wifi_done();
         void error();
     };
-
-    namespace Animations
-    {
-        void glitter(Engine &engine, AnimationData &data);
-    }
 } // namespace Intimate

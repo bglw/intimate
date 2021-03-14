@@ -36,5 +36,4 @@ void Engine::fill(CRGB::HTMLColorCode color)
 void Engine::blank()
 {
     fill(CRGB::Black);
-    render();
 }

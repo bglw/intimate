@@ -8,8 +8,8 @@
 #define UNIVERSE_COUNT 1
 
 // Network config
-const char ssid[] = "uhhhh we don't have any"; // Replace with your SSID
-const char passphrase[] = "PterraceRoyale";    // Replace with your WPA2 passphrase
+const char ssid[] = "Loaf"; // Replace with your SSID
+const char passphrase[] = "RedKitchen";    // Replace with your WPA2 passphrase
 
 // Animations
 Intimate::Engine engine;
@@ -24,6 +24,8 @@ void setup()
 
     engine.setup(0);
     engine.blank();
+    engine.wifi_wait();
+    engine.render();
 
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, passphrase);
@@ -60,7 +62,9 @@ void loop()
         engine.update(packet.property_values);
     }
 
-    Intimate::Animations::glitter(engine, engine.primary);
+    //Intimate::Animations::glitter(engine, engine.primary);
+
+    //engine.step();
 
     engine.render();
 }
