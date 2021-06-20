@@ -7,12 +7,17 @@ using namespace Intimate;
 
 void Engine::update(uint8_t vals[])
 {
-    uint8_t i = dmx_address + 1; // Skip first value (universe data)
+    uint16_t i = dmx_address;
 
-    for(int dot = 0; dot < NUM_LEDS; dot++) { 
-        leds[dot].r = vals[i++];
-        leds[dot].g = vals[i++];
-        leds[dot].b = vals[i++];
+    for(int dot = 0; dot < NUM_LEDS; dot+=1) { 
+        leds_b[dot].r = vals[i];
+        leds_a[dot].r = vals[i++];
+
+        leds_b[dot].g = vals[i];
+        leds_a[dot].g = vals[i++];
+
+        leds_b[dot].b = vals[i];
+        leds_a[dot].b = vals[i++];
     }
 
     // if (vals[i] != brightness)

@@ -2,11 +2,12 @@
 
 using namespace Intimate;
 
-void Engine::setup(uint8_t addr)
+void Engine::setup(uint16_t addr)
 {
     dmx_address = addr;
 
-    FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, len).setCorrection(TypicalLEDStrip);
+    FastLED.addLeds<LED_TYPE, DATA_PIN_A, COLOR_ORDER>(leds_a, len).setCorrection(TypicalLEDStrip);
+    FastLED.addLeds<LED_TYPE, DATA_PIN_B, COLOR_ORDER>(leds_b, len).setCorrection(TypicalLEDStrip);
     FastLED.setBrightness(5);
     render();
 }
@@ -30,7 +31,8 @@ void Engine::render()
 
 void Engine::fill(CRGB::HTMLColorCode color)
 {
-    fill_solid(leds, len, color);
+    fill_solid(leds_a, len, color);
+    fill_solid(leds_b, len, color);
 }
 
 void Engine::blank()

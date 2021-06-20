@@ -5,7 +5,8 @@
 #include "animations.h"
 
 // LED config
-#define DATA_PIN 1
+#define DATA_PIN_A 7
+#define DATA_PIN_B 1
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
 #define NUM_LEDS 60
@@ -25,13 +26,14 @@ namespace Intimate
     class Engine
     {
     public:
-        CRGB leds[NUM_LEDS];
+        CRGB leds_a[NUM_LEDS];
+        CRGB leds_b[NUM_LEDS];
         uint8_t len;
         uint8_t brightness;
         bool utility_toggle;
         AnimationData primary;
         AnimationData accent;
-        uint8_t dmx_address;
+        uint16_t dmx_address;
 
         Engine()
             : len(NUM_LEDS), brightness(100), utility_toggle(false), primary{0, 0, {0, 0, 0}}, accent{0, 0, {0, 0, 0}}
@@ -40,7 +42,7 @@ namespace Intimate
         }
 
         // Engine core
-        void setup(uint8_t addr);
+        void setup(uint16_t addr);
         void ready();
         void refresh();
         void render();
